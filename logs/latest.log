@@ -1,0 +1,29 @@
+[09:22:17] [Client thread/INFO]: Setting user: BlockChicken_
+[09:22:17] [Client thread/INFO]: (Session ID is token:eyJhbGciOiJIUzI1NiJ9.eyJ4dWlkIjoiMjUzNTQ2OTUxMDg4NDEyNyIsImFnZyI6IkFkdWx0Iiwic3ViIjoiMTQwZWZiZTEtYmViMS00MWMyLWFjYjktZjVjM2ZmMjk1ZWM0IiwibmJmIjoxNjczMTQwNjUzLCJhdXRoIjoiWEJPWCIsInJvbGVzIjpbXSwiaXNzIjoiYXV0aGVudGljYXRpb24iLCJleHAiOjE2NzMyMjcwNTMsImlhdCI6MTY3MzE0MDY1MywicGxhdGZvcm0iOiJVTktOT1dOIiwieXVpZCI6ImFhOTVjZTQ5N2RkYzYwMDRiZDgzZDQzMzkzNGE1NDQ3In0.WkkfxPgq82veaL5H5KgHnpP6M17LKtell1TyKOLOsVk:eaf09b76ccd44c2289f51a6edb36bedc)
+[09:22:21] [Client thread/INFO]: LWJGL Version: 2.9.4
+[09:22:22] [Client thread/INFO]: Reloading ResourceManager: Default, §a§aNahida§a§a[32x].zip
+[09:22:22] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[09:22:23] [Thread-5/INFO]: Initializing LWJGL OpenAL
+[09:22:23] [Thread-5/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[09:22:23] [Thread-5/ERROR]: Error in class 'LibraryLWJGLOpenAL'
+[09:22:23] [Thread-5/ERROR]: Unable to initialize OpenAL.  Probable cause: OpenAL not supported.
+[09:22:23] [Thread-5/WARN]: ERROR MESSAGE:
+[09:22:23] [Thread-5/INFO]: Could not locate OpenAL library.
+[09:22:23] [Thread-5/WARN]: STACK TRACE:
+[09:22:23] [Thread-5/INFO]: org.lwjgl.openal.AL.create(AL.java:156)
+[09:22:23] [Thread-5/INFO]: org.lwjgl.openal.AL.create(AL.java:102)
+[09:22:23] [Thread-5/INFO]: org.lwjgl.openal.AL.create(AL.java:206)
+[09:22:23] [Thread-5/INFO]: paulscode.sound.libraries.LibraryLWJGLOpenAL.init(LibraryLWJGLOpenAL.java:164)
+[09:22:23] [Thread-5/INFO]: paulscode.sound.SoundSystem.CommandNewLibrary(SoundSystem.java:1576)
+[09:22:23] [Thread-5/INFO]: paulscode.sound.SoundSystem.CommandQueue(SoundSystem.java:2572)
+[09:22:23] [Thread-5/INFO]: paulscode.sound.CommandThread.run(CommandThread.java:121)
+[09:22:23] [Sound Library Loader/WARN]: ERROR MESSAGE:
+[09:22:23] [Sound Library Loader/INFO]: Could not locate OpenAL library.
+[09:22:23] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[09:22:23] [Thread-7/INFO]: Switching to No Sound
+[09:22:23] [Thread-7/INFO]: (Silent Mode)
+[09:22:24] [Sound Library Loader/INFO]: Sound engine started
+[09:22:26] [Client thread/INFO]: Created: 1024x512 textures-atlas
+[09:22:28] [Client thread/INFO]: Stopping!
+[09:22:28] [Client thread/INFO]: SoundSystem shutting down...
+[09:22:29] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
