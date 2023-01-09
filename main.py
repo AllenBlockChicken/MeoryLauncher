@@ -2,6 +2,7 @@ from os.path import exists
 from json import loads
 from json import dumps
 import zipfile
+from os import system
 
 version = "1.8.9"
 mcdir = "C:\Users\Allen\AppData\Local\Programs\Minecraft\正版专用\.minecraft"
@@ -58,9 +59,9 @@ def run(mcdir: str, version: str, javaw_path: str, maxMen: str, username: str): 
             for lib in dic["libraries"]:
                 if "classifiers" in lib['downloads']:
                     for native in lib['downloads']:
-                        if native == "artifect":
+                        if native == "artifact":
                             dirct_path = mcdir + "\\versions\\" + version + "\\" + version + "natives"  # 解压到的路径
-                            filepath = mcdir + "\\libraries\\" + lib["downloads"][native]['path']  # 要解压的artifect库
+                            filepath = mcdir + "\\libraries\\" + lib["downloads"][native]['path']  # 要解压的artifact库
                             unpress(filepath, dirct_path)
 
                         elif native == 'classifiers':
@@ -77,3 +78,50 @@ def run(mcdir: str, version: str, javaw_path: str, maxMen: str, username: str): 
                   mcdir + "\\versions\\" + version + "\\" + version + "-natives" + \
                   '" -Dminecraft.launcher.brand=launcher ' + \
                   '-Dminecraft.launcher.version=1.0.0 -cp'
+
+            classpath += '"'
+
+            for lib in dic["libraries"]:
+                if not 'classifiers' in lib["downloads"]:
+                    normal = mcdir + "\\libraries\\" + lib["downloads"]["artifact"]["path"]  # 普通库路径
+                    classpath += normal + ";"  # 将普通库路径追加到-cp后面
+
+            classpath = classpath + mcdir + "\\versions\\" + version + "\\" + version + ".jar" + '"'
+            JVM = JVM + " " + classpath + " -Xmx" + maxMen + " -Xmn256m -Dlog4j.formatMsgNoLookups=true"
+
+        mc_args += dic["mainClass"] + " "
+        for arg in dic["arguments"]["game"]:
+            if isinstance(arg, str):
+                mc_args += arg + " "
+            elif isinstance(arg, dict):  # 无论是什么，只要是在大括号里括着的，都被python认为是字典类型
+                if isinstance(arg["value"], list):
+                    for a in arg["value"]:
+                        mc_args += a + " "
+                elif isinstance(arg["value"], str):
+                    mc_args += arg["value"] + " "
+        # 将模板替换为具体数值
+        mc_args = mc_args.replace("${auth_player_name}", username)  # 玩家名称
+        mc_args = mc_args.replace("${version_name}", version)  # 版本名称
+        mc_args = mc_args.replace("${game_directory}", mcdir)  # mc路径
+        mc_args = mc_args.replace("${assets_root}", mcdir + "\\assets")  # 资源文件路径
+        mc_args = mc_args.replace("${assets_index_name}", dic["assetIndex"]["id"])  # 资源索引文件名称
+        mc_args = mc_args.replace("${auth_uuid}", "{}")  # 由于没有写微软登录,所以uuid为空的
+        mc_args = mc_args.replace("${auth_access_token}", "{}")  # 同上
+        mc_args = mc_args.replace("${clientid}", version)  # 客户端id
+        mc_args = mc_args.replace("${auth_xuid}", "{}")  # 离线登录,不填
+        mc_args = mc_args.replace("${user_type}", "Legacy")  # 用户类型,离线模式是Legacy
+        mc_args = mc_args.replace("${version_type}", dic["type"])  # 版本类型
+        mc_args = mc_args.replace("${resolution_width}", "1000")  # 窗口宽度
+        mc_args = mc_args.replace("${resolution_height}", "800")  # 窗口高度
+        mc_args = mc_args.replace("-demo ", "")  # 去掉-demo参数，退出试玩版
+
+        commandLine = JVM + " " + mc_args
+
+        bat = open("run.bat","w")
+        bat.write(commandLine)
+        bat.close()
+        system("pyLauncher.bat")
+
+
+run(mcdir,version,javaw_path,maxMen,username)
+
