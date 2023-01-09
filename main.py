@@ -3,12 +3,17 @@ from json import loads
 from json import dumps
 import zipfile
 from os import system
+import tkinter as tk
+from tkinter import filedialog
+
+root = tk.Tk()
+root.withdraw()
 
 version = "1.19.3"
-mcdir = 'D:\\program\\minecrafts\\Meory\\MeoryLauncher\\.minecraft'
-javaw_path = "C:\\Program Files\Java\\jdk-19\\bin\\javaw.exe"
+mcdir = filedialog.askdirectory(title='选择".minecraft"文件夹')
+javaw_path = filedialog.askopenfilename(title='选择"javaw.exe"文件（通常在“C:/Program Files/Java/Java版本/bin/”中')
 username = input("请输入用户名：")
-maxMen = input("请输入最大内存（实例：1024M）：")
+maxMen = input("请输入最大内存（例：1024M）：")
 
 '''
 filename:解压的文件名
