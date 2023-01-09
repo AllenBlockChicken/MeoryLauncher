@@ -4,11 +4,11 @@ from json import dumps
 import zipfile
 from os import system
 
-version = "1.8.9"
-mcdir = "C:\Users\Allen\AppData\Local\Programs\Minecraft\正版专用\.minecraft"
-maxMen = "1024M"
-javaw_path = "C:\\Program Files\Java\\jre1.8.0_351\\bin\\javaw.exe"
-username = "BlockChicken_"
+version = "1.19.3"
+mcdir = 'D:\\program\\minecrafts\\Meory\\MeoryLauncher\\.minecraft'
+javaw_path = "C:\\Program Files\Java\\jdk-19\\bin\\javaw.exe"
+username = input("请输入用户名：")
+maxMen = input("请输入最大内存（实例：1024M）：")
 
 '''
 filename:解压的文件名
@@ -51,7 +51,7 @@ def run(mcdir: str, version: str, javaw_path: str, maxMen: str, username: str): 
             and (not username == "")
             and (not mcdir == "")):
 
-        if allMyVersion(version=version, ):
+        if allMyVersion(version=version,mcdir=mcdir ):
             version_json = open(mcdir + "\\versions\\" + version + "\\" + version + ".json")
             dic = loads(version_json.read())
             version_json.close()
@@ -117,7 +117,7 @@ def run(mcdir: str, version: str, javaw_path: str, maxMen: str, username: str): 
 
         commandLine = JVM + " " + mc_args
 
-        bat = open("run.bat","w")
+        bat = open("pyLauncher.bat","w")
         bat.write(commandLine)
         bat.close()
         system("pyLauncher.bat")
