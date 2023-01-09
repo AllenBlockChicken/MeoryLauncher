@@ -3,6 +3,9 @@
 
 ## Update:
 
+### -- Version 0.4
+- Support choose your ".minecraft" Folder and your "javaw.exe" file
+
 ### -- Version 0.3
 - You can use it!!!
 - need ".minecraft" Folder
