@@ -9,7 +9,8 @@ from tkinter import filedialog
 root = tk.Tk()
 root.withdraw()
 
-version = "1.19.3"
+print("Meory Launcher!")
+version = input("请输入版本号（例如：1.8.9）：")
 mcdir = filedialog.askdirectory(title='选择".minecraft"文件夹')
 javaw_path = filedialog.askopenfilename(title='选择"javaw.exe"文件（通常在“C:/Program Files/Java/Java版本/bin/”中')
 username = input("请输入用户名：")
